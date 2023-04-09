@@ -6,5 +6,10 @@ Prosty kalkulator graficzny wykorzystujący Odwróconą Notację Polską.
 
 Kod zawiera:
 * main.cpp
-* 
-* You should implement DRY principles to the rest of your life :smile:
+* ...
+* ...
+
+Autorzy projektu:
+* Oskar Makuch
+* Szymon Protaś
+* Victor Mroziewicz
