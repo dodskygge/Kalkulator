@@ -1,4 +1,4 @@
-## Kalkulator ONP z wykresemi graficznymi
+## Kalkulator ONP z plotterem
 
 Prosty kalkulator graficzny wykorzystujący Odwróconą Notację Polską.
 
