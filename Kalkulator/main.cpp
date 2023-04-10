@@ -20,19 +20,18 @@ int main() {
 	//Funkcja1
 	std::vector<double> y1;
 	std::vector<double> x1;
-
-	//Rozdzielczosc i rozmiar
-	double minX = -10;
-	double maxX = 10;
-	double minY = -10;
-	double maxY = 10;
-	double res = 0.1;
 	
-	graph->graphAxis(minX, maxX, minY, maxY);
-	graph->linear(1, 2);
 
-	plt::xlim(-10, 10); 	
-	plt::ylim(-10, 10);		
+
+
+
+	graph->minY = -15;
+	graph->minY = 15;
+	graph->graphAxis();
+	graph->polynomial(5);
+
+	plt::xlim(graph->minX, graph->maxX); 	
+	plt::ylim(graph->minY, graph->maxY);
 
 	plt::show();
 

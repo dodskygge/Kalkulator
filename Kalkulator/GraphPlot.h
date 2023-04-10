@@ -9,14 +9,16 @@
 
 class GraphPlot {
 public:
-	//Wspolrzedne x, y
-	void graphAxis(double minX, double maxX, double minY, double maxY);
+	// Zainicjowane wartoœci domyœlne dla rozmiaru wykresu
+	int minX = -10, maxX = 10, minY = -10, maxY = 10, res = 1; 
 
+	//Wspolrzedne x, y
+	void graphAxis(void);
 
 	//Podstawowe
 	void linear(double a, double b);
 	void cubic(double a, double b, double c);
-	void polynomial(double n);
+	void polynomial(int n);
 	void modulus(double a, double b, double c);
 
 	//Funkcje trygonometryczne
