@@ -2,7 +2,7 @@
 
 Prosty kalkulator graficzny wykorzystujący Odwróconą Notację Polską.
 
-#Do uruchomienia wymagany jest zaintstalowany <b>Python39</b>!
+#Do uruchomienia wymagany jest zaintstalowany <b>Python39</b>! <br>
 #UWAGA! Kalkulator nie jest jeszcze skończonym projektem!
 
 Kod zawiera:
