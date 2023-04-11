@@ -19,8 +19,8 @@ void GraphPlot::graphAxis(void) {
 	std::vector<double> yy = {-1000000, 1000000};
 	std::vector<double> xy = {0, 0};
 
-	plt::plot(xx, yx, "grey"); //Narysuj linie wsp. x
-	plt::plot(xy, yy, "grey"); //Narysuj linie wsp. y
+	plt::plot(xx, yx, axisColor); //Narysuj linie wsp. x
+	plt::plot(xy, yy, axisColor); //Narysuj linie wsp. y
 	plt::xlim(minX, maxX);
 	plt::ylim(minY, maxY);
 };
@@ -31,27 +31,29 @@ void GraphPlot::linear(double a, double b) { //ax+b
 	std::vector<double> y1;
 	std::vector<double> x1;
 
-	for (double i = -10; i <= 10; i = i + res) {
+	for (double i = minX; i <= maxX; i = i + res) {
 		x1.insert(x1.begin(), i);
 		y1.insert(y1.begin(), (a*i)+b);
 	}
 
-	plt::plot(x1, y1, "red");
+	plt::plot(x1, y1, functionColor);
 	plt::show();
 	return;
 };
 
 void GraphPlot::cubic(double a, double b, double c) {
+	graphAxis();
 	std::vector<double> y2;
 	std::vector<double> x2;
 
 	for (double i = -10; i <= 10; i = i + 1) {
 		x2.insert(x2.begin(), i);
-		y2.insert(y2.begin(), (a * i) + b);
+		y2.insert(y2.begin(), a*pow(i,2) + b * i + c);
 	}
 
-	plt::plot(x2, y2, "black");
+	plt::plot(x2, y2, functionColor);
 	plt::show();
+	return;
 };
 
 void GraphPlot::polynomial(int n) { 

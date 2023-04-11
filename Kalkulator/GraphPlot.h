@@ -10,6 +10,7 @@ class GraphPlot {
 private:
 	// ZMIENNE DLA USTAWIEÑ WYKRESU
 	double minX = -10, maxX = 10, minY = -10, maxY = 10, res = 0.2;
+	std::string axisColor = "grey", functionColor = "red";
 public:
 
 	//WSPÓ£RZÊDNE X I Y
@@ -33,6 +34,7 @@ public:
 	double get_minY(void);
 	double get_maxY(void);
 	double get_res(void);
+	std::string get_color(void);
 
 	//SETTER
 	void set_minX(double set);
@@ -40,5 +42,6 @@ public:
 	void set_minY(double set);
 	void set_maxY(double set);
 	void set_res(double set);
+	void set_color(std::string set);
 
 };

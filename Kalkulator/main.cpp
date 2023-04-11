@@ -109,10 +109,15 @@ void graphMain(void) {
 	int selectSettings = 0;
 	int selectGraph = 0;
 	double inputValue = 0;
+	int a = 0, b = 0, c = 0, n = 0;
 	
 
 	//PĘTLA PROGRAMU GRAPHMAIN
 	while (!(select == 3 || select == 4)) {
+		//PONOWNA INICJALIZACJA
+		selectGraph = -1;
+		selectSettings = -1;
+		select = 0;
 
 		//MENU
 		system("CLS");
@@ -162,8 +167,6 @@ void graphMain(void) {
 				//																	=============SWITCH WYKRES START=============
 			case 1: //LINIOWA
 				system("CLS");
-				int a;
-				int b;
 				cout << "f(x) = ax+b" << endl;
 				cout << "Podaj a i b: " << endl;
 				cout << "a = ";
@@ -174,7 +177,18 @@ void graphMain(void) {
 				break;
 
 			case 2: //KWADRATOWA
+				system("CLS");
+				cout << "f(x) = ax^2 + bx + c" << endl;
+				cout << "Podaj a, b, c: " << endl;
+				cout << "a = ";
+				cin >> a;
+				cout << "b = ";
+				cin >> b;
+				cout << "c = ";
+				cin >> c;
+				graph->cubic(a, b, c);
 				break;
+
 			case 3:
 				break;
 			case 4:
