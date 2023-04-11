@@ -2,8 +2,8 @@
 
 Prosty kalkulator graficzny wykorzystujący Odwróconą Notację Polską.
 
-#Do uruchomienia wymagany jest zaintstalowany <b>Python39</b>! <br>
-#UWAGA! Kalkulator nie jest jeszcze skończonym projektem!
+<h3>#Do uruchomienia wymagany jest zaintstalowany <b>Python39</b>! <br>
+#UWAGA! Kalkulator nie jest jeszcze skończonym projektem!</h3>
 
 Kod zawiera:
 * main.cpp - główny plik progrmau
@@ -16,5 +16,8 @@ Autorzy projektu:
 * Oskar Makuch
 * Szymon Protaś
 * Victor Mroziewicz
+
+<h2>Diagram</h2>
+<img src="diagram.png" alt="Diagram">
 
 Kod nie posiada licencji - kod można dobrowolnie uidostępniać i wykorzstywać 
