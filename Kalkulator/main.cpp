@@ -10,15 +10,15 @@
 //	* Cierpliwo˜œæ :)
 //
 //	Opis:
-//	Kalkulator u¾ywa algorytmu Odwr¢conej Notacji Polskiej (ONP) i biblioteki matplotlibcpp, kt¢ra
-//	ˆ¥czy si© z Pythonem i rysuje wybrany wz¢r.
+//	Kalkulator u¾ywa algorytmu Odwr¢conej Notacji Polskiej (ONP) i biblioteki matplotlibcpp, która
+//	³¹czy siê z Pythonem i rysuje wybrany wz¢r.
 // 
 //	Pliki:
-//		main.cpp - gˆ¢wna klasa
-//		graphplot.h - plik nagˆ¢wkowy klasy graphplot
+//		main.cpp - gˆ³ówna klasa
+//		graphplot.h - plik nagˆ³ówkowy klasy graphplot
 //		graphplot.cpp - definicje metod klasy graphplot
 //		matplotlibcpp.h - biblioteka zawieraja kod do rysowania wykresu w Pythonie
-//		ONPCalc.h - plik nagˆ¢wkowy zawieraj¥cy klas© ...... z algorytmem ONP
+//		ONPCalc.h - plik nagˆ³ówkowy zawieraj¹cy klasê ...... z algorytmem ONP
 // 
 //	============================================================================================	//
 
@@ -31,7 +31,7 @@
 #include <stack>
 
 
-//PRZESTRZEã NAZW
+//PRZESTRZEÑ NAZW
 using namespace std; 
 namespace plt = matplotlibcpp; //Przestrzeñ znaków dla matplotlibcpp
 
