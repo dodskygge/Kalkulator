@@ -1,4 +1,3 @@
-#define _USE_MATH_DEFINES
 #include "matplotlibcpp.h"
 #include <cmath>
 #include <math.h>
@@ -9,7 +8,7 @@
 namespace plt = matplotlibcpp;
 
 
-//Linie wspó³rzêdnych
+//WSPÓ£RZÊDNE X I Y
 void GraphPlot::graphAxis(void) {
 	
 	//Linia wspolrzednej x
@@ -22,19 +21,24 @@ void GraphPlot::graphAxis(void) {
 
 	plt::plot(xx, yx, "grey"); //Narysuj linie wsp. x
 	plt::plot(xy, yy, "grey"); //Narysuj linie wsp. y
+	plt::xlim(minX, maxX);
+	plt::ylim(minY, maxY);
 };
 
-//Podstawowe
+//FUNKCJE
 void GraphPlot::linear(double a, double b) { //ax+b
+	graphAxis();
 	std::vector<double> y1;
 	std::vector<double> x1;
 
-	for (double i = -10; i <= 10; i = i + 1) {
+	for (double i = -10; i <= 10; i = i + res) {
 		x1.insert(x1.begin(), i);
 		y1.insert(y1.begin(), (a*i)+b);
 	}
 
 	plt::plot(x1, y1, "red");
+	plt::show();
+	return;
 };
 
 void GraphPlot::cubic(double a, double b, double c) {
@@ -47,6 +51,7 @@ void GraphPlot::cubic(double a, double b, double c) {
 	}
 
 	plt::plot(x2, y2, "black");
+	plt::show();
 };
 
 void GraphPlot::polynomial(int n) { 
@@ -82,27 +87,26 @@ void GraphPlot::polynomial(int n) {
 	}
 
 	plt::plot(x3, y3, "black");
+	plt::show();
 
 	return;
 };
 
-
-
-
 void GraphPlot::modulus(double a, double b, double c) {
 };
 
-//Funkcje trygonometryczne
 void GraphPlot::sinus(void) {
 };
+
 void GraphPlot::cosinus(void) {
 };
+
 void GraphPlot::tangent(void) {
 };
 
-//Funkcje wyk³adnicze
 void GraphPlot::logarithmic(double a) {
 };
+
 void GraphPlot::exponential(double a) {
 };
 
@@ -111,7 +115,7 @@ void GraphPlot::userCustom(std::string customExpression) {
 };
 
 
-//Gettery i settery
+//GETTERY I SETTERY
 double GraphPlot::get_minX(void) {
 	return minX;
 };
@@ -143,6 +147,3 @@ void GraphPlot::set_maxY(double set) {
 void GraphPlot::set_res(double set) {
 	res = set;
 };
-
-
-

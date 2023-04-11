@@ -1,28 +1,27 @@
-Ôªø//	============================================================================================	//
+//	============================================================================================	//
 //									Prosty kalkulator graficzny
 // 
 //	Data: 04.2023
-//	ProwadzƒÖcy: mgr. in≈º. Jacek Adamczyk
-//	Autorzy: Oskar Makuch, Szymon Prota≈õ, Victor Mroziewicz
+//	Prowadz•cy: mgr. inø. Jacek Adamczyk
+//	Autorzy: Oskar Makuch, Szymon Protaòú, Victor Mroziewicz
 //	
 //	Wymagania:
 //	* Python39 (w tym dodanie lokalizacji Pythona39 do projektu)
-//	* Cierpliwo≈õƒá :)
+//	* CierpliwoòúÊ :)
 //
 //	Opis:
-//	Kalkulator u≈ºywa algorytmu Odwr√≥conej Notacji Polskiej (ONP) i biblioteki matplotlibcpp, kt√≥ra
-//	≈ÇƒÖczy siƒô z Pythonem i rysuje wybrany wz√≥r.
+//	Kalkulator uæywa algorytmu Odwr¢conej Notacji Polskiej (ONP) i biblioteki matplotlibcpp, kt¢ra
+//	à•czy si© z Pythonem i rysuje wybrany wz¢r.
 // 
 //	Pliki:
-//	main.cpp - g≈Ç√≥wna klasa
-//	graphplot.h - plik nag≈Ç√≥wkowy klasy graphplot
-//	graphplot.cpp - definicje metod klasy graphplot
-//	matplotlibcpp.h - biblioteka zawieraja kod do rysowania wykresu w Pythonie
-//	ONPCalc.h - plik nag≈Ç√≥wkowy zawierajƒÖcy klasƒô ...... z algorytmem ONP
+//		main.cpp - gà¢wna klasa
+//		graphplot.h - plik nagà¢wkowy klasy graphplot
+//		graphplot.cpp - definicje metod klasy graphplot
+//		matplotlibcpp.h - biblioteka zawieraja kod do rysowania wykresu w Pythonie
+//		ONPCalc.h - plik nagà¢wkowy zawieraj•cy klas© ...... z algorytmem ONP
 // 
 //	============================================================================================	//
 
-#define _USE_MATH_DEFINES
 #include "matplotlibcpp.h"
 #include <cmath>
 #include <math.h>
@@ -31,34 +30,38 @@
 #include "graphplot.h"
 #include <stack>
 
+
+//PRZESTRZE„ NAZW
 using namespace std; 
-namespace plt = matplotlibcpp; //Przestrze≈Ñ znak√≥w dla matplotlibcpp
+namespace plt = matplotlibcpp; //PrzestrzeÒ znakÛw dla matplotlibcpp
+
+//DEKLARACJE FUNKCJI I ZMIENNYCH
 void onpCalc(void); //Funkcja ONP
-void graphMain(void); //Funkcja do wy≈õwietlania funkcji
-GraphPlot* graph; // Utworzenie wska≈∫nika do obiektu graph
-string menuLine = "==========================================================="; // String z liniƒÖ dla menu
+void graphMain(void); //Funkcja do wyòwietlania funkcji
+GraphPlot* graph; // Utworzenie wskaünika do obiektu graph
+string menuLine = "==========================================================="; // String z liniπ dla menu
 static int selectMain = 0; //Zmienna wyboru w main
 
 
 int main() {
-	//DEKLARACJE ZMIENNYCH I USTAWIENIE POLSKICH ZNAK√ìW
+	//DEKLARACJE ZMIENNYCH I USTAWIENIE POLSKICH ZNAK‡W
 	int select = 0;
-	setlocale(LC_CTYPE, "Polish");
+	system("chcp 1250");
+	system("CLS");
 
-
-
+	//P TLA MAIN
 	while (select != 3) {
-		//MENU PROGRAMU - wyb√≥r funkcji
-		if (selectMain != 3) { // Zako≈Ñcz je≈õli funkcja podrzƒôdna zmieni≈Ça warto≈õƒá selectMain na 3
+		//MENU PROGRAMU - wybÛrr funkcji
+		if (selectMain != 3) { // ZakoÒcz jeòúli funkcja podrzÍdna zmieniàa wartoòúÊ selectMain na 3
 		cout << menuLine << endl;
 		cout << "                        KALKULATOR                         " << endl << endl;
 		cout << "	1. Kalkulator                                           " << endl;
 		cout << "	2. Wykres funkcji										" << endl;
-		cout << "	3. Wyjd≈∫												" << endl << endl;
+		cout << "	3. Wyjdü												" << endl << endl;
 		cout << menuLine << endl;
 			cin >> selectMain;
 		}
-		//SPRAWDZENIE POPRAWNO≈öCI WYBORU
+		//SPRAWDZENIE POPRAWNOåCI WYBORU
 		if (cin.fail())
 		{
 			cin.clear();
@@ -66,7 +69,7 @@ int main() {
 
 		}
 
-		//WYB√ìR
+		//WYB”R
 		switch (selectMain) {
 		case 1:
 			system("CLS");
@@ -78,12 +81,12 @@ int main() {
 		case 3:
 			system("CLS");
 			cout << menuLine << endl;
-			cout << "Zako≈Ñczono pomy≈õlnie" << endl;
+			cout << "ZakoÒczono pomyúlnie" << endl;
 			cout << menuLine << endl;
 			return 0;
 		default:
 			system("CLS");
-			cout << "≈πle wybrano!" << endl;
+			cout << "èle wybrano!" << endl;
 			break;
 		}
 
@@ -98,7 +101,7 @@ void onpCalc(void) {
 };
 
 void graphMain(void) {
-	//UTWORZENIE OBIEKTU WE WSKA≈πNIKU
+	//UTWORZENIE OBIEKTU WE WSKAèNIKU
 	graph = new GraphPlot;
 
 	//DEKLARACJE
@@ -108,17 +111,18 @@ void graphMain(void) {
 	double inputValue = 0;
 	
 
-	//PƒòTLA PROGRAMU GRAPHMAIN
+	//P TLA PROGRAMU GRAPHMAIN
 	while (!(select == 3 || select == 4)) {
 
 		//MENU
+		system("CLS");
 		cout << menuLine << endl << endl;
 		cout << "1. Wykres" << endl;
 		cout << "2. Ustawienia" << endl;
-		cout << "3. Wr√≥ƒá" << endl;
-		cout << "4. Wyjd≈∫" << endl << endl;
-		cout << "Je≈ºeli wykres ≈∫le siƒô wy≈õwietla to nale≈ºy w ustawieniach zmieniƒá" << endl;
-		cout << "warto≈õci minimalne i maksymalne X i Y!" << endl;
+		cout << "3. WrÛÊ" << endl;
+		cout << "4. Wyjdü" << endl << endl;
+		cout << "Jeøeli wykres üle siÍ wyúwietla to naleøy zmieniÊ w ustawieniach" << endl;
+		cout << "wartoúci minimalne i maksymalne dla X i Y!" << endl;
 		cout << menuLine << endl;
 		cin >> select;
 		if (cin.fail())
@@ -127,27 +131,85 @@ void graphMain(void) {
 			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 		}
-		system("CLS");
 
 		//MENU SWITCH
 		switch (select) {
-		//	                                                                       =================SWITCH G≈Å√ìWNY START====================
+		//	                                                                       =================SWITCH G£”WNY START=================
 		case 1: //CASE 1 - WYKRES
+			
+			//MENU
+			system("CLS");
+			cout << menuLine << endl << endl;
+			cout << "FUNKCJA" << endl << endl;
+			cout << "1. Liniowa" << endl;
+			cout << "2. Kwadratowa" << endl;
+			cout << "3. Wielomian [max 5 potÍga]" << endl;
+			cout << "4. WartoúÊ bezwzglÍdna" << endl;
+			cout << "5. Sin" << endl;
+			cout << "6. Cos" << endl;
+			cout << "7. Tan" << endl;
+			cout << "8. Logarytmiczna" << endl;
+			cout << "9. Wyk≥adnicza" << endl;
+			//cout << "" << endl; custom funkcja - w trakcie wymyúlania :/
+			cout << "0. WrÛÊ" << endl << endl;
+			cout << "Jeøeli wykres üle siÍ wyúwietla to naleøy zmieniÊ w ustawieniach" << endl;
+			cout << "wartoúci minimalne i maksymalne dla X i Y!" << endl;
+			cout << menuLine << endl;
+			cin >> selectGraph;
 
-			return;
+			//WYKRES MENU SWITCH
+			switch (selectGraph) {
+				//																	=============SWITCH WYKRES START=============
+			case 1: //LINIOWA
+				system("CLS");
+				int a;
+				int b;
+				cout << "f(x) = ax+b" << endl;
+				cout << "Podaj a i b: " << endl;
+				cout << "a = ";
+				cin >> a;
+				cout << "b = ";
+				cin >> b;
+				graph->linear(a, b);
+				break;
 
+			case 2: //KWADRATOWA
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
+				break;
+			case 9:
+				break;
+			case 0:
+				break;
+				//																	=============SWITCH WYKRES STOP=============
+			}
+
+			break;
 
 		case 2: // CASE 2 - USTAWIENIA
 			while (!(selectSettings == 4)) {
-				//MENU USTAWIE≈É
+				//MENU USTAWIE—
+				system("CLS");
 				cout << menuLine << endl;
-				cout << "1. Przedzia≈Ç X   [Min X = " << graph->get_minX() << " Max X = " << graph->get_maxX() << "]" << endl;
-				cout << "2. Przedzia≈Ç Y   [Min Y = " << graph->get_minY() << " Max Y = " << graph->get_maxY() << "]" << endl;
-				cout << "3. Dok≈Çadno≈õƒá = " << graph->get_res() << " - co ile X wykres ma obliczaƒá Y" << endl;
-				cout << "4. Wr√≥ƒá" << endl;
-				cout << "Im wiƒôksza dok≈Çadno≈õƒá tym d≈Çu≈ºej program mo≈ºe ≈Çadowaƒá wykres!" << endl;
+				cout << "1. Przedzia≥ X   [Min X = " << graph->get_minX() << " Max X = " << graph->get_maxX() << "]" << endl;
+				cout << "2. Przedzia≥ Y   [Min Y = " << graph->get_minY() << " Max Y = " << graph->get_maxY() << "]" << endl;
+				cout << "3. Dok≥adnoúÊ = " << graph->get_res() << " - co ile wykres ma obliczaÊ Y" << endl;
+				cout << "4. WrÛÊ" << endl;
+				cout << "Im wiÍksza dok≥adnoúÊ tym d≥uøej program moøe liczyÊ wykres!" << endl;
 				cout << menuLine << endl;
 				cin >> selectSettings;
+
+				//SPRAWDZENIE WYBORU
 				if (cin.fail())
 				{
 					cin.clear();
@@ -155,7 +217,7 @@ void graphMain(void) {
 
 				}
 
-				//WPISANIE WARTO≈öCI
+				//WPISANIE WARTOåCI
 				switch (selectSettings) {
 				case 1:
 					cout << "Min X = ";
@@ -176,7 +238,7 @@ void graphMain(void) {
 					system("CLS");
 					break;
 				case 3:
-					cout << "Dok≈Çadno≈õƒá = ";
+					cout << "DokàadnoòúÊ = ";
 					cin >> inputValue;
 					graph->set_res(inputValue);
 					system("CLS");
@@ -186,13 +248,13 @@ void graphMain(void) {
 					break;
 				default:
 					system("CLS");
-					cout << "≈πle wybrano!" << endl;
+					cout << "èle wybrano!" << endl;
 					break;
 				}
 			}
 			break;
 
-		case 3: // CASE 3 - WR√ìƒÜ
+		case 3: // CASE 3 - WR”∆
 			system("CLS");
 			delete graph;
 			return;
@@ -204,15 +266,15 @@ void graphMain(void) {
 			return;
 		default:
 			system("CLS");
-			cout << "≈πle wybrano!" << endl;
+			cout << "èle wybrano!" << endl;
 			break;
-			//	                                                                       =================SWITCH G≈Å√ìWNY KONIEC====================
+			//	                                                                       =================SWITCH G£”WNY KONIEC=================
 		}
 		
 	}
 
 
-	//ZNISZCZENIE OBIEKTU I ZAKO≈ÉCZENIE FUNKCJI
+	//ZNISZCZENIE OBIEKTU I ZAKO—CZENIE FUNKCJI
 	delete graph;
 	return;
 }
