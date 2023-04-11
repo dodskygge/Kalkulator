@@ -17,7 +17,7 @@ Autorzy projektu:
 * Szymon Protaś
 * Victor Mroziewicz
 
-## Diagram
+#Diagram
 <img src="diagram.png" alt="Diagram">
 
 Kod nie posiada licencji - kod można dobrowolnie uidostępniać i wykorzstywać 
