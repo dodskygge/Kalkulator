@@ -14,10 +14,10 @@ void GraphPlot::graphAxis(void) {
 	
 	//Linia wspolrzednej x
 	std::vector<double> yx = {0, 0};
-	std::vector<double> xx = {-100000, 100000};
+	std::vector<double> xx = {-1000000, 1000000};
 
 	//Linia wspolrzednej y
-	std::vector<double> yy = {-100000, 100000};
+	std::vector<double> yy = {-1000000, 1000000};
 	std::vector<double> xy = {0, 0};
 
 	plt::plot(xx, yx, "grey"); //Narysuj linie wsp. x
@@ -62,7 +62,7 @@ void GraphPlot::polynomial(int n) {
 
 
 	while (factorIndex <= n) { // Wpisanie wybranej iloœci wspó³czynników
-		std::cout << "Podaj wspolczynnik przy przy X ^ " << factorIndex << ":" << std::endl;
+		std::cout << "Podaj wspó³czynnik przy przy X ^ " << factorIndex << ":";
 		std::cin >> factorArray[factorIndex];
 
 		factorIndex++;
@@ -76,12 +76,14 @@ void GraphPlot::polynomial(int n) {
 			factorArray[4] * pow(i, 4) +
 			factorArray[3] * pow(i, 3) +
 			factorArray[2] * pow(i, 2) +
-			factorArray[1] * pow(i, 1) +
+			factorArray[1] * i +
 			factorArray[0]
 		);
 	}
 
 	plt::plot(x3, y3, "black");
+
+	return;
 };
 
 
@@ -104,8 +106,42 @@ void GraphPlot::logarithmic(double a) {
 void GraphPlot::exponential(double a) {
 };
 
-//Funkcja custom
+//Funkcja custom ?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
 void GraphPlot::userCustom(std::string customExpression) {
+};
+
+
+//Gettery i settery
+double GraphPlot::get_minX(void) {
+	return minX;
+};
+double GraphPlot::get_maxX(void) {
+	return maxX;
+};
+double GraphPlot::get_minY(void) {
+	return minY;
+};
+double GraphPlot::get_maxY(void) {
+	return maxY;
+};
+double GraphPlot::get_res(void) {
+	return res;
+};
+
+void GraphPlot::set_minX(double set) {
+	minX = set;
+};
+void GraphPlot::set_maxX(double set) {
+	maxX = set;
+};
+void GraphPlot::set_minY(double set) {
+	minY = set;
+};
+void GraphPlot::set_maxY(double set) {
+	maxY = set;
+};
+void GraphPlot::set_res(double set) {
+	res = set;
 };
 
 

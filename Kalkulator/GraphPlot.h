@@ -8,9 +8,10 @@
 #include <string>
 
 class GraphPlot {
-public:
+private:
 	// Zainicjowane wartoœci domyœlne dla rozmiaru wykresu
-	int minX = -10, maxX = 10, minY = -10, maxY = 10, res = 1; 
+	double minX = -10, maxX = 10, minY = -10, maxY = 10, res = 0.2;
+public:
 
 	//Wspolrzedne x, y
 	void graphAxis(void);
@@ -32,4 +33,18 @@ public:
 
 	//Funkcja custom
 	void userCustom(std::string customExpression);
+
+	//Gettery i settery
+	double get_minX(void);
+	double get_maxX(void);
+	double get_minY(void);
+	double get_maxY(void);
+	double get_res(void);
+
+	void set_minX(double set);
+	void set_maxX(double set);
+	void set_minY(double set);
+	void set_maxY(double set);
+	void set_res(double set);
+
 };
