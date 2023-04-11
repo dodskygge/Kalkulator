@@ -18,6 +18,6 @@ Autorzy projektu:
 * Victor Mroziewicz
 
 ##Diagram
-diagram.png
+<img src="diagram.png" alt="Diagram">
 
 Kod nie posiada licencji - kod można dobrowolnie uidostępniać i wykorzstywać 
