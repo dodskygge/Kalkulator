@@ -297,7 +297,7 @@ void graphMain(void) {
 				cout << "1. Przedział X   [Min X = " << graph->get_minX() << " Max X = " << graph->get_maxX() << "]" << endl;
 				cout << "2. Przedział Y   [Min Y = " << graph->get_minY() << " Max Y = " << graph->get_maxY() << "]" << endl;
 				cout << "3. Dokładność = " << graph->get_res() << " - co ile wykres ma obliczać Y" << endl;
-				cout << "4. Kolor = " << graph->get_color() << " - co ile wykres ma obliczać Y" << endl;
+				cout << "4. Kolor = " << graph->get_color() << endl;
 				cout << "5. Wróć" << endl;
 				cout << "Im większa dokładność tym dłużej program może liczyć wykres!" << endl;
 				cout << menuLine << endl;
