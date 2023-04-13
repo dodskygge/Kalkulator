@@ -19,12 +19,12 @@ public:
 	//FUNCKJE
 	void linear(double a, double b);
 	void cubic(double a, double b, double c);
-	void polynomial(int n);
-	void modulus(double a, double b, double c);
+	void polynomial(int a, int b, int c, int d, int e, int f);
+	void modulus(void);
 	void sinus(void);
 	void cosinus(void);
 	void tangent(void);
-	void logarithmic(double a);
+	void logarithmic(void);
 	void exponential(double a);
 	void userCustom(std::string customExpression); // ???
 

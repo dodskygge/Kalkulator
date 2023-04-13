@@ -46,7 +46,7 @@ void GraphPlot::cubic(double a, double b, double c) {
 	std::vector<double> y2;
 	std::vector<double> x2;
 
-	for (double i = -10; i <= 10; i = i + 1) {
+	for (double i = minX; i <= maxX; i = i + res) {
 		x2.insert(x2.begin(), i);
 		y2.insert(y2.begin(), a*pow(i,2) + b * i + c);
 	}
@@ -56,60 +56,116 @@ void GraphPlot::cubic(double a, double b, double c) {
 	return;
 };
 
-void GraphPlot::polynomial(int n) { 
-	if (n > 5) {
-		return;
-	}
-
-	int factorArray[6] = {0, 0, 0, 0, 0, 0};
-	int factorIndex = 0;
-
+void GraphPlot::polynomial(int a, int b, int c, int d, int e, int f) { 
+	graphAxis();
 	std::vector<double> y3;
 	std::vector<double> x3;
 
 
-	while (factorIndex <= n) { // Wpisanie wybranej iloœci wspó³czynników
-		std::cout << "Podaj wspó³czynnik przy przy X ^ " << factorIndex << ":";
-		std::cin >> factorArray[factorIndex];
-
-		factorIndex++;
-	}
-
-	for (double i = -10; i <= 10; i = i + 1) { //Pêtla wpisuj¹ca wartoœci pod x i y
+	for (double i = minX; i <= maxX; i = i + res) { //Pêtla wpisuj¹ca wartoœci pod x i y
 		x3.insert(x3.begin(), i);
 		y3.insert(
 			y3.begin(),
-			factorArray[5] * pow(i, 5) +
-			factorArray[4] * pow(i, 4) +
-			factorArray[3] * pow(i, 3) +
-			factorArray[2] * pow(i, 2) +
-			factorArray[1] * i +
-			factorArray[0]
-		);
+			a * pow(i, 5) +
+			b * pow(i, 4) +
+			c * pow(i, 3) +
+			d * pow(i, 2) +
+			e * i + f);
 	}
 
-	plt::plot(x3, y3, "black");
+	plt::plot(x3, y3, functionColor);
 	plt::show();
-
 	return;
 };
 
-void GraphPlot::modulus(double a, double b, double c) {
+void GraphPlot::modulus(void) {
+	graphAxis();
+	std::vector<double> y4;
+	std::vector<double> x4;
+
+	for (double i = minX; i <= maxX; i = i + res) {
+		x4.insert(x4.begin(), i);
+		y4.insert(y4.begin(), sqrt(i*i));
+	}
+
+	plt::plot(x4, y4, functionColor);
+	plt::show();
+	return;
 };
 
 void GraphPlot::sinus(void) {
+	graphAxis();
+	std::vector<double> y5;
+	std::vector<double> x5;
+
+	for (double i = minX; i <= maxX; i = i + res) {
+		x5.insert(x5.begin(), i);
+		y5.insert(y5.begin(), sin(i));
+	}
+
+	plt::plot(x5, y5, functionColor);
+	plt::show();
+	return;
 };
 
 void GraphPlot::cosinus(void) {
+	graphAxis();
+	std::vector<double> y6;
+	std::vector<double> x6;
+
+	for (double i = minX; i <= maxX; i = i + res) {
+		x6.insert(x6.begin(), i);
+		y6.insert(y6.begin(), cos(i));
+	}
+
+	plt::plot(x6, y6, functionColor);
+	plt::show();
+	return;
 };
 
 void GraphPlot::tangent(void) {
+	graphAxis();
+	std::vector<double> y7;
+	std::vector<double> x7;
+
+	for (double i = minX; i <= maxX; i = i + res) {
+		x7.insert(x7.begin(), i);
+		y7.insert(y7.begin(), tan(i));
+	}
+
+	plt::plot(x7, y7, functionColor);
+	plt::show();
+	return;
 };
 
-void GraphPlot::logarithmic(double a) {
+void GraphPlot::logarithmic(void) {
+	graphAxis();
+	std::vector<double> y8;
+	std::vector<double> x8;
+
+	for (double i = minX; i <= maxX; i = i + res) {
+		x8.insert(x8.begin(), i);
+		y8.insert(y8.begin(), log(i));
+	}
+
+	plt::plot(x8, y8, functionColor);
+	plt::show();
+	return;
 };
 
 void GraphPlot::exponential(double a) {
+	graphAxis();
+	std::vector<double> y9;
+	std::vector<double> x9;
+
+	for (float i = minX; i <= maxX; i = i + res) {
+		x9.insert(x9.begin(), i);
+		y9.insert(y9.begin(), pow(a, i));
+	}
+
+	plt::plot(x9, y9, functionColor);
+	plt::show();
+	return;
 };
 
 //Funkcja custom ?????????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
@@ -133,6 +189,9 @@ double GraphPlot::get_maxY(void) {
 double GraphPlot::get_res(void) {
 	return res;
 };
+std::string GraphPlot::get_color(void) {
+	return functionColor;
+};
 
 void GraphPlot::set_minX(double set) {
 	minX = set;
@@ -148,4 +207,7 @@ void GraphPlot::set_maxY(double set) {
 };
 void GraphPlot::set_res(double set) {
 	res = set;
+};
+void GraphPlot::set_color(std::string set) {
+	functionColor = set;
 };

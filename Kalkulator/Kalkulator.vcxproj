@@ -153,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="graphplot.h" />
     <ClInclude Include="matplotlibcpp.h" />
+    <ClInclude Include="ONP_Algorytm.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
