@@ -18,7 +18,7 @@
 //		graphplot.h - plik nagłówkowy klasy graphplot
 //		graphplot.cpp - definicje metod klasy graphplot
 //		matplotlibcpp.h - biblioteka zawieraja kod do rysowania wykresu w Pythonie
-//		ONP_Algorytm.h - plik nagłówkowy zawierający klasę ...... z algorytmem ONP
+//		ONP_Algorytm.h - plik nagłówkowy zawierający klasę ONPCalc z algorytmem ONP
 // 
 //	============================================================================================	//
 
