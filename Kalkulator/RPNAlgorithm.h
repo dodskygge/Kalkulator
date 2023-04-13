@@ -100,7 +100,7 @@ private:
 
 
 public:
-	int ONP(std::string input) {
+	int calculate(std::string input) {
 		std::vector<std::string> notation = parse(input);
 
 		return RPN(notation);

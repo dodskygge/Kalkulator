@@ -29,7 +29,7 @@
     <ClInclude Include="graphplot.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="ONP_Algorytm.h">
+    <ClInclude Include="RPNAlgorithm.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>

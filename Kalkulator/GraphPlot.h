@@ -8,15 +8,15 @@
 
 class GraphPlot {
 private:
-	// ZMIENNE DLA USTAWIEÑ WYKRESU
+	// DECLARATIONS
 	double minX = -10, maxX = 10, minY = -10, maxY = 10, res = 0.2;
 	std::string axisColor = "grey", functionColor = "red";
 public:
 
-	//WSPÓ£RZÊDNE X I Y
+	//X Y AXIS
 	void graphAxis(void);
 
-	//FUNCKJE
+	//METHODS
 	void linear(double a, double b);
 	void cubic(double a, double b, double c);
 	void polynomial(int a, int b, int c, int d, int e, int f);
@@ -26,9 +26,9 @@ public:
 	void tangent(void);
 	void logarithmic(void);
 	void exponential(double a);
-	void userCustom(std::string customExpression); // ???
+	void userCustom(std::string customExpression); 
 
-	//GETTER
+	//GETTERS & SETTERS
 	double get_minX(void);
 	double get_maxX(void);
 	double get_minY(void);
@@ -36,7 +36,7 @@ public:
 	double get_res(void);
 	std::string get_color(void);
 
-	//SETTER
+
 	void set_minX(double set);
 	void set_maxX(double set);
 	void set_minY(double set);

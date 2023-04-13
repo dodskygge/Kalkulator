@@ -1,29 +1,30 @@
 ﻿//	============================================================================================	//
-//									Prosty kalkulator graficzny
+//									Simple Graphic Calculator
 // 
-//	Data: 04.2023
-//	ProwadzĄcy: mgr. inż. Jacek Adamczyk
-//	Autorzy: Oskar Makuch, Szymon Protaś, Victor Mroziewicz
+//	Date: 04.2023
+//	Authors : Oskar Makuch, Szymon Protaś, Victor Mroziewicz
 //	
-//	Wymagania:
-//	* Python39 (w tym dodanie lokalizacji Pythona39 do projektu)
-//	* Cierpliwość :)
+//	Requirements:
+//	* Python39 (Remember to set path to your Python39 installation)
+//	* Patience :)
 //
-//	Opis:
-//	Kalkulator uľywa algorytmu Odwr˘conej Notacji Polskiej (ONP) i biblioteki matplotlibcpp, która
-//	łączy się z Pythonem i rysuje wybrany wz˘r.
+//	Description:
+//	Program uses Reversed Polish Notation (RPN) Algrotihm, matplotlib-cpp library
+//	from https://github.com/lava/matplotlib-cpp
 // 
 //	Pliki:
-//		main.cpp - główna klasa
-//		graphplot.h - plik nagłówkowy klasy graphplot
-//		graphplot.cpp - definicje metod klasy graphplot
-//		matplotlibcpp.h - biblioteka zawieraja kod do rysowania wykresu w Pythonie
-//		ONP_Algorytm.h - plik nagłówkowy zawierający klasę ONPCalc z algorytmem ONP
+//		main.cpp - main
+//		graphplot.h - header with class to drawing function using matplotlib
+//		graphplot.cpp - mthod definitions in graphplot class
+//		matplotlibcpp.h - plotting library
+//		ONP_Algorytm.h - RPN algorithm class
 // 
 //	============================================================================================	//
 
+
+//INCLUDE
 #include "matplotlibcpp.h"
-#include "ONP_Algorytm.h"
+#include "RPNAlgorithm.h"
 #include <cmath>
 #include <math.h>
 #include <vector>
@@ -32,29 +33,30 @@
 #include <stack>
 
 
-//PRZESTRZEŃ NAZW
+//NAMESPACES
 using namespace std; 
-namespace plt = matplotlibcpp; //Przestrzeń znaków dla matplotlibcpp
+namespace plt = matplotlibcpp;
 
-//DEKLARACJE FUNKCJI I ZMIENNYCH
-void onpCalc(void); //Funkcja ONP
-void graphMain(void); //Funkcja do wywietlania funkcji
-GraphPlot* graph; // Utworzenie wskaźnika do obiektu graph
-ONPCalc* calc;
-string menuLine = "==========================================================="; // String z linią dla menu
-static int selectMain = 0; //Zmienna wyboru w main
+//DECLARATIONS
+void onpCalc(void); //Calculator mode function
+void graphMain(void); //Plotting mode function
+GraphPlot* graph; // Pointer to  plotter
+ONPCalc* calc;	//Pointer to calculator
+string menuLine = "==========================================================="; //Menu string
+static int selectMain = 0; //Main select index
+
 
 
 int main() {
-	//DEKLARACJE ZMIENNYCH I USTAWIENIE POLSKICH ZNAKŕW
+	//DECLARATIONS
 	int select = 0;
 	system("chcp 1250");
 	system("CLS");
 
-	//PĘTLA MAIN
+	//MAIN LOOP
 	while (select != 3) {
-		//MENU PROGRAMU - wybórr funkcji
-		if (selectMain != 3) { // Zakończ jeśli funkcja podrzędna zmienia wartość selectMain na 3
+		//MENU - mode select
+		if (selectMain != 3) { 
 		cout << menuLine << endl;
 		cout << "                        KALKULATOR                         " << endl << endl;
 		cout << "	1. Kalkulator                                           " << endl;
@@ -63,7 +65,7 @@ int main() {
 		cout << menuLine << endl;
 			cin >> selectMain;
 		}
-		//SPRAWDZENIE POPRAWNOŚCI WYBORU
+		//CHECK CIN
 		if (cin.fail())
 		{
 			cin.clear();
@@ -71,7 +73,7 @@ int main() {
 
 		}
 
-		//WYBÓR
+		//SWITCH MAIN
 		switch (selectMain) {
 		case 1:
 			system("CLS");
@@ -100,36 +102,35 @@ int main() {
 }
 
 void onpCalc(void) {
-	//DEKLARACJE ZMIENNYCH I UTWORZENIE OBIEKTU WE WSKAŹNIKU
+	//DECLARATIONS
 	calc = new ONPCalc;
 	string expression = "0";
 	string check = "k";
 
-	//PĘTLA PROGRAMU
+	//LOOP onpCalc
 	while (!(expression == check)) {
 		cout << menuLine << endl;
 		cout << "Wpisz wyrażenie bez nawiasów [ 'k' żeby wyjść ]: " << endl;
 		cin >> expression;
 		cout << endl;
 
-		//SPRAWDZENIE CZY WYJŚCIE LUB WYŚWIETLENIE WYNIKU
+		//CHECK IF END
 		if (!(expression == check)) {
 
-			cout << "Wynik: " << calc->ONP(expression) << endl;
+			cout << "Wynik: " << calc->calculate(expression) << endl;
 		}
 	}
 
-	//USUNIĘCIE WSKAŹNIKA I ZAKOŃCZENIE PROGRAMU
+	//DELETE POINTER AND END FUNCTION
 	system("CLS");
 	delete calc;
 	return;
 };
 
 void graphMain(void) {
-	//UTWORZENIE OBIEKTU WE WSKAŹNIKU
+	
+	//DECLARATIONS
 	graph = new GraphPlot;
-
-	//DEKLARACJE
 	int select = 0;
 	int selectSettings = 0;
 	int selectGraph = 0;
@@ -138,14 +139,14 @@ void graphMain(void) {
 	double a = 0, b = 0, c = 0, d = 0, e = 0, f = 0, n = 0;
 	
 
-	//PĘTLA PROGRAMU GRAPHMAIN
+	//LOOP graphMain
 	while (!(select == 3 || select == 4)) {
-		//PONOWNA INICJALIZACJA
+		//INITIALIZATION
 		selectGraph = -1;
 		selectSettings = -1;
 		select = 0;
 
-		//MENU
+		//MENU graphMain
 		system("CLS");
 		cout << menuLine << endl << endl;
 		cout << "1. Wykres" << endl;
@@ -156,6 +157,7 @@ void graphMain(void) {
 		cout << "wartości minimalne i maksymalne dla X i Y!" << endl;
 		cout << menuLine << endl;
 		cin >> select;
+		//CHECK CIN
 		if (cin.fail())
 		{
 			cin.clear();
@@ -163,10 +165,10 @@ void graphMain(void) {
 
 		}
 
-		//MENU SWITCH
+		//MENU graphMain
 		switch (select) {
 		//	                                                                       =================SWITCH GŁÓWNY START=================
-		case 1: //CASE 1 - WYKRES
+		case 1: //CASE 1 - WYKRES/PLOTTER
 			
 			//MENU
 			system("CLS");
@@ -181,17 +183,17 @@ void graphMain(void) {
 			cout << "7. Tan" << endl;
 			cout << "8. Logarytmiczna" << endl;
 			cout << "9. Wykładnicza" << endl;
-			//cout << "" << endl; custom funkcja - w trakcie wymyślania :/
+			//cout << "" << endl; custom 
 			cout << "0. Wróć" << endl << endl;
 			cout << "Jeżeli wykres źle się wyświetla to należy zmienić w ustawieniach" << endl;
 			cout << "wartości minimalne i maksymalne dla X i Y!" << endl;
 			cout << menuLine << endl;
 			cin >> selectGraph;
 
-			//WYKRES MENU SWITCH
+			//SWITCH - PLOT
 			switch (selectGraph) {
 				//																	=============SWITCH WYKRES START=============
-			case 1: //LINIOWA
+			case 1: //LINIOWA LINEAR
 				system("CLS");
 				cout << "f(x) = ax+b" << endl;
 				cout << "Podaj a i b: " << endl;
@@ -202,7 +204,7 @@ void graphMain(void) {
 				graph->linear(a, b);
 				break;
 
-			case 2: //KWADRATOWA
+			case 2: //KWADRATOWA CUBIC
 				system("CLS");
 				cout << "f(x) = ax^2 + bx + c" << endl;
 				cout << "Podaj a, b, c: " << endl;
@@ -215,7 +217,7 @@ void graphMain(void) {
 				graph->cubic(a, b, c);
 				break;
 
-			case 3: //WIELOMIAN
+			case 3: //WIELOMIAN POLYNOMIAL up to 5 power
 				system("CLS");
 				cout << "[2] ex + f" << endl;
 				cout << "[6] ax^5 + bx^4 + cx^3 + dx^2 + ex + f" << endl;
@@ -253,7 +255,7 @@ void graphMain(void) {
 				graph->polynomial(a, b, c, d, e, f);
 				break;
 
-			case 4: //BEZWZGLĘDNA
+			case 4: //BEZWZGLĘDNA Modulus
 				system("CLS");
 				graph->modulus();
 				break;
@@ -273,7 +275,7 @@ void graphMain(void) {
 				system("CLS");
 				graph->logarithmic();
 				break;
-			case 9: //WYKŁADNICZA
+			case 9: //WYKŁADNICZA EXPONENTIAL
 				system("CLS");
 				cout << "f(x) = a^x" << endl;
 				cin >> a;
@@ -287,9 +289,9 @@ void graphMain(void) {
 
 			break;
 
-		case 2: // CASE 2 - USTAWIENIA
+		case 2: // CASE 2 - USTAWIENIA SETTINGS
 			while (!(selectSettings == 5)) {
-				//MENU USTAWIEŃ
+				//MENU PLOT SETTINGS
 				system("CLS");
 				cout << menuLine << endl;
 				cout << "1. Przedział X   [Min X = " << graph->get_minX() << " Max X = " << graph->get_maxX() << "]" << endl;
@@ -301,7 +303,7 @@ void graphMain(void) {
 				cout << menuLine << endl;
 				cin >> selectSettings;
 
-				//SPRAWDZENIE WYBORU
+				//CHECK CIN
 				if (cin.fail())
 				{
 					cin.clear();
@@ -309,7 +311,7 @@ void graphMain(void) {
 
 				}
 
-				//WPISANIE WARTOŚCI
+				//SWITCH SETTINGS
 				switch (selectSettings) {
 				case 1:
 					cout << "Min X = ";
@@ -353,12 +355,12 @@ void graphMain(void) {
 			}
 			break;
 
-		case 3: // CASE 3 - WRÓĆ
+		case 3: // CASE 3 - WRÓĆ BACK
 			system("CLS");
 			delete graph;
 			return;
 
-		case 4: // CASE 4 - KONIEC
+		case 4: // CASE 4 - KONIEC END
 			system("CLS");
 			delete graph;
 			selectMain = 3;
@@ -373,7 +375,7 @@ void graphMain(void) {
 	}
 
 
-	//ZNISZCZENIE OBIEKTU I ZAKOŃCZENIE FUNKCJI
+	//DELETE POINTER AND END FUNCTION graphMain
 	delete graph;
 	return;
 }
