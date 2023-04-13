@@ -3,14 +3,17 @@
 Prosty kalkulator graficzny wykorzystujący Odwróconą Notację Polską.
 
 <h3>#Do uruchomienia wymagany jest zaintstalowany <b>Python39</b>! <br>
-#UWAGA! Kalkulator nie jest jeszcze skończonym projektem!</h3>
+
+Notatki aktualizacji:
+* 11.04 - wykresy funkcji
+* 13.04 - pełna funkcjonalność z kalkulatorem ONP
 
 Kod zawiera:
 * main.cpp - główny plik progrmau
-* graphplot.h - plik nagłówkowy z deklaracjami klasy GraphPlot (W TRAKCIE PRACY)
-* graphplot.cpp - definicje metod klasy graphplot (W TRAKCIE PRACY)
+* graphplot.h - plik nagłówkowy z deklaracjami klasy GraphPlot
+* graphplot.cpp - definicje metod klasy graphplot
 * matplotlibcpp.h - biblioteka zawierająca kod do rysowania wykresu w Pythonie
-* ONPCalc.h - plik nagłówkowy zawierający klasę ONPCalc z algorytmem ONP (W TRAKCIE PRACY)
+* ONP_Algorytm.h - plik nagłówkowy zawierający klasę ONPCalc z algorytmem ONP
 
 Autorzy projektu:
 * Oskar Makuch
