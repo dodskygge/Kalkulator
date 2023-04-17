@@ -1,17 +1,17 @@
 #include <cmath>
 #include <vector>
 #include <string>
-#include <stack>
 #include <iostream>
+#include "stack.h"
 
 
 class ONPCalc {
 private:
-	std::stack<int> numbers;
-	std::stack<std::string> operators;
+	Stack numbers;
+	StackString operators;
 
 
-	int getPrecedence(std::string& o)
+	double getPrecedence(string o)
 	{
 		if (o == "+" || o == "-")
 			return 1;
@@ -19,34 +19,34 @@ private:
 		return 2;
 	}
 
-	int calculate(int a, int b, const std::string& operation)
+	double calculate(double a, double b, const string operation)
 	{
 		if (operation == "+")
 			return a + b;
-		if (operation == "-")
+		else if (operation == "-")
 			return a - b;
-		if (operation == "*")
+		else if (operation == "*")
 			return a * b;
-		if (operation == "/")
+		else if (operation == "/")
 			return a / b;
-		return -1;
+		else if (operation == "^")
+			return pow(a, b);
+		else
+			return -99999;
 	}
 
-	void performOperation(std::stack<int>& numbers, std::stack<std::string>& operators) {
-		int n1 = numbers.top();
+	void performOperation(void) {
+		double n1 = numbers.topElement();
 		numbers.pop();
-		int n2 = numbers.top();
+		double n2 = numbers.topElement();
 		numbers.pop();
-		std::string op = operators.top();
+		string op = operators.topElement();
 		operators.pop();
 
 		numbers.push(calculate(n2, n1, op));
 	}
 
-	int RPN(std::vector<std::string>& notation) {
-
-		std::stack<int> numbers;
-		std::stack<std::string> operators;
+	double RPN(vector<string>& notation) {
 
 		if (notation.empty())
 			return 0;
@@ -55,24 +55,24 @@ private:
 
 		for (int i = 1; i < notation.size(); i += 2)
 		{
-			while (!operators.empty() && getPrecedence(operators.top()) >= getPrecedence(notation[i]))
-				performOperation(numbers, operators);
+			while (!operators.isEmpty() && getPrecedence(operators.topElement()) >= getPrecedence(notation[i]))
+				performOperation();
 
-			numbers.push(std::stoi(notation[i + 1]));
+			numbers.push(stoi(notation[i + 1]));
 			operators.push(notation[i]);
 		}
 
-		while (!operators.empty())
-			performOperation(numbers, operators);
+		while (!operators.isEmpty())
+			performOperation();
 
-		return numbers.top();
+		return numbers.topElement();
 	}
 
-	std::vector<std::string> parse(const std::string& input)
+	vector<string> parse(const string& input)
 	{
-		std::vector<std::string> vec;
+		vector<string> vec;
 
-		std::string current;
+		string current;
 
 		for (char c : input)
 		{
@@ -82,8 +82,8 @@ private:
 			{
 				if (!current.empty())
 				{
-					vec.emplace_back(std::move(current));
-					current = "";
+					vec.emplace_back(move(current));
+					current = " ";
 				}
 
 				if (c != ' ')
@@ -100,8 +100,8 @@ private:
 
 
 public:
-	int calculate(std::string input) {
-		std::vector<std::string> notation = parse(input);
+	double calculate(string input) {
+		vector<string> notation = parse(input);
 
 		return RPN(notation);
 	}

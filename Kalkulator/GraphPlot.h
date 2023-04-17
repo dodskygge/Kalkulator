@@ -19,7 +19,7 @@ public:
 	//METHODS
 	void linear(double a, double b);
 	void cubic(double a, double b, double c);
-	void polynomial(int a, int b, int c, int d, int e, int f);
+	void polynomial(double a, double b, double c, double d, double e, double f);
 	void modulus(void);
 	void sinus(void);
 	void cosinus(void);

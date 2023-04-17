@@ -56,7 +56,7 @@ void GraphPlot::cubic(double a, double b, double c) {
 	return;
 };
 
-void GraphPlot::polynomial(int a, int b, int c, int d, int e, int f) { 
+void GraphPlot::polynomial(double a, double b, double c, double d, double e, double f) {
 	graphAxis();
 	std::vector<double> y3;
 	std::vector<double> x3;
