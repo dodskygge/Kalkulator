@@ -24,4 +24,4 @@ Autorzy projektu:
 <h2>Diagram</h2>
 <img src="diagram.png" alt="Diagram">
 
-Kod nie posiada licencji - kod można dobrowolnie uidostępniać i wykorzstywać 
+Kod nie posiada licencji - kod można dobrowolnie udostępniać i wykorzystywać 
