@@ -13,7 +13,8 @@ Kod zawiera:
 * graphplot.h - plik nagłówkowy z deklaracjami klasy GraphPlot
 * graphplot.cpp - definicje metod klasy graphplot
 * matplotlibcpp.h - biblioteka zawierająca kod do rysowania wykresu w Pythonie
-* ONP_Algorytm.h - plik nagłówkowy zawierający klasę ONPCalc z algorytmem ONP
+* ONP_Algorytm.h - plik nagłówkowy zawierający klasę ONPCalc z algorytmem ONP
+* stack.h - plik nagłówkowy ze stosem
 
 Autorzy projektu:
 * Oskar Makuch
