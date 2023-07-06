@@ -2,7 +2,7 @@
 
 Prosty kalkulator graficzny wykorzystujący Odwróconą Notację Polską.
 
-<h3># Do uruchomienia wymagany jest zaintstalowany <b>Python39</b>! <br></h3>
+<h3>Do uruchomienia wymagany jest zaintstalowany <b>Python39</b>! <br></h3>
 
 Notatki aktualizacji:
 * 11.04 - wykresy funkcji
